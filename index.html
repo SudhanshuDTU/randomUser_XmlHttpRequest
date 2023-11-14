@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR Request</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <h1>Hi Sudhanshu</h1>
+    <p>Following is the Random User from API</p>
+
+    <div class="box">
+        <div class="image"></div>
+        <h2 class="name"></h2>
+        <h3 class="age"> </h3>
+        <h3 class="gender"></h3>
+    </div>
+    
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', "https://randomuser.me/api/");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText);
+
+                //image
+                let imageUrl = data.results[0].picture.large;
+                const image = document.createElement('img');
+                image.src = `${imageUrl}`;
+                document.querySelector('.image').appendChild(image);
+
+
+                //user name
+                let firstName = data.results[0].name.first;
+                let lastName = data.results[0].name.last;
+                document.querySelector('.name').innerHTML = `${firstName}  ${lastName}`;
+
+                //gender
+                let gender = data.results[0].gender;
+                document.querySelector('.gender').innerHTML = `${gender}`;
+
+                //age
+                let age = data.results[0].dob.age;
+                document.querySelector('.age').innerHTML = `${age}`;
+
+            }
+
+        };
+        xhr.send();
+
+
+    </script>
+</body>
+
+</html>

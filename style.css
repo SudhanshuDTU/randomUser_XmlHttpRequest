@@ -1,0 +1,32 @@
+h1,p{
+    display: flex;
+    justify-content: center;
+}
+.image{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+h2,h3{
+    display: flex;
+    justify-content: center;
+    color: indianred;
+}
+.box{
+    height: 40vh;
+    width: 22vw;
+    background: #212121;
+    
+    border-radius: 20px;
+
+   /* bring box at center */
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+body{
+    background: pink;
+}
